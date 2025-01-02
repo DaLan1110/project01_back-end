@@ -57,12 +57,12 @@ const path = require('path');
 
 // 這裡假設 `config.js` 存放在 `config` 資料夾下
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.env || 'development';
 
 // 引用 config 設定檔案
 const config = require(path.join(__dirname, '../config.js'))[env];
 
-console.log(config);
+console.log(config)
 
 const db = {};
 let sequelize;
