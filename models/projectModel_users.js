@@ -86,10 +86,10 @@ if (process.env.DATABASE_URL) {
         port: config.port,
         logging: false, // 關閉查詢日誌輸出
         dialectOptions: {
-            // ssl: {
-            //     require: true,
-            //     rejectUnauthorized: false, // 若需要使用 SSL 證書
-            // }
+            ssl: {
+                require: true,
+                rejectUnauthorized: false, // 若需要使用 SSL 證書
+            }
         }
     });
 }
