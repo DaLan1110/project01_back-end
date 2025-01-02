@@ -5,7 +5,7 @@ const config = require('../config');
 const jwt = require('jsonwebtoken');
 
 // 處理密碼加密
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const saltRounds = 10; // 增加計算哈希的難度 10, 12, 14 間 大部分 10, 12 最高安全 14
 
 // 上傳圖片
