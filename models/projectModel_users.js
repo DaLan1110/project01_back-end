@@ -62,6 +62,8 @@ const env = process.env.NODE_ENV || 'development';
 // 引用 config 設定檔案
 const config = require(path.join(__dirname, '../config.js'))[env];
 
+console.log(config);
+
 const db = {};
 let sequelize;
 
