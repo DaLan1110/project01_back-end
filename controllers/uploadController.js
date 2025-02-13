@@ -85,11 +85,6 @@ exports.deleteImage = async (req, res) => {
             return res.status(400).json({ error: "缺少 public_id" });
         }
 
-        // 確保 publicId 包含 product 資料夾
-        if (!publicId.startsWith("product/")) {
-            publicId = `product/${publicId}`;
-        }
-
         const result = await cloudinary.uploader.destroy(publicId);
         console.log("Cloudinary 刪除結果:", result);
 
