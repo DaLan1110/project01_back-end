@@ -7,6 +7,6 @@ const uploadController = require('../controllers/uploadController')
 router.post('/uploadImg', uploadMulter.uploadMulter, uploadController.uploadImage);
 
 // 刪除圖檔
-router.delete('/deleteImage', uploadMulter.deleteImage);
+router.delete('/deleteImage/:imageUrl', uploadController.deleteImage);
 
 module.exports = router;
