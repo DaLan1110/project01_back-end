@@ -11,6 +11,7 @@ const memberRouter = require('./routes/membersAccount')
 const productRouter = require('./routes/product')
 const orderRouter = require('./routes/order')
 const joinusRouter = require('./routes/joinUs')
+const uploadImg = require('./routes/uploadImg')
 
 const todoRouter = require('./routes/todoRouter');
 
@@ -49,6 +50,7 @@ app.use('/members', memberRouter);
 app.use('/products', productRouter);
 app.use('/orders', orderRouter);
 app.use('/joinUs', joinusRouter);
+app.use('/uploadImg', uploadImg);
 
 // 提供靜態文件夾，讓前端可以訪問上傳的圖片
 app.use('/img', express.static('img'));
