@@ -85,6 +85,8 @@ exports.deleteImage = async (req, res) => {
             return res.status(400).json({ error: "缺少 public_id" });
         }
 
+        console.log("即將刪除的 publicId:", publicId);
+
         const result = await cloudinary.uploader.destroy(publicId);
         console.log("Cloudinary 刪除結果:", result);
 
