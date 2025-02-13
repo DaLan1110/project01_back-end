@@ -10,13 +10,33 @@ cloudinary.config({
 });
 
 // 上傳 Buffer 格式的圖片到 Cloudinary
+// const uploadFromBuffer = (req) => {
+//     return new Promise((resolve, reject) => {
+//         let cld_upload_stream = cloudinary.uploader.upload_stream(
+//             (error, result) => {
+//                 if (result) {
+//                     resolve(result);
+//                     console.log(result)
+//                 } else {
+//                     reject(error);
+//                 }
+//             }
+//         );
+
+//         streamifier.createReadStream(req.file.buffer).pipe(cld_upload_stream);
+//     });
+// };
+
 const uploadFromBuffer = (req) => {
     return new Promise((resolve, reject) => {
         let cld_upload_stream = cloudinary.uploader.upload_stream(
+            {
+                folder: 'product', // 指定上傳到 Cloudinary 的 product 資料夾
+            },
             (error, result) => {
                 if (result) {
                     resolve(result);
-                    console.log(result)
+                    console.log(result);
                 } else {
                     reject(error);
                 }
