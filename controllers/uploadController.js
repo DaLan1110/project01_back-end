@@ -79,7 +79,7 @@ exports.uploadImage = async (req, res, next) => {
 // 刪除圖片 API
 exports.deleteImage = async (req, res) => {
     try {
-        const { publicId } = req.params;
+        let { publicId } = req.params;
 
         if (!publicId) {
             return res.status(400).json({ error: "缺少 public_id" });
@@ -89,8 +89,6 @@ exports.deleteImage = async (req, res) => {
         if (!publicId.startsWith("product/")) {
             publicId = `product/${publicId}`;
         }
-
-        console.log("即將刪除的 publicId:", publicId);
 
         const result = await cloudinary.uploader.destroy(publicId);
         console.log("Cloudinary 刪除結果:", result);
