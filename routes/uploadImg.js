@@ -4,6 +4,6 @@ const uploadMulter = require('../models/uploadMulter')
 const uploadController = require('../controllers/uploadController')
 
 // 上傳照片
-router.post('/', uploadMulter, uploadController.uploadImage);
+router.post('/uploadImg', uploadMulter, uploadController.uploadImage);
 
 module.exports = router;
