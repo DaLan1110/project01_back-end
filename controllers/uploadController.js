@@ -59,18 +59,11 @@ exports.uploadImage = async (req, res, next) => {
 // 刪除圖片 API
 exports.deleteImage = async (req, res) => {
     try {
-        const { imageUrl } = req.params;
+        const { publicId } = req.params;
 
-        if (!imageUrl) {
+        if (!publicId) {
             return res.status(400).json({ error: "缺少 public_id" });
         }
-
-        // 解析 `publicId`（取得 Cloudinary 的唯一識別 ID）
-        const publicId = imageUrl
-            .split("/")
-            .slice(-2) // 取得最後兩段路徑
-            .join("/")
-            .replace(/\.[^.]+$/, ""); // 移除副檔名
 
         const result = await cloudinary.uploader.destroy(publicId);
         console.log("Cloudinary 刪除結果:", result);
