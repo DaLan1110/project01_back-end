@@ -8,7 +8,7 @@ const uploadMulter = multer({
         fileSize: 83886080, //最大 10mb
     },
     fileFilter: function (req, file, cb) {
-        let ext = path.extname(file.originalname);
+        let ext = path.extname(file.originalname).toLowerCase();
         if (ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png') {
             const error = new Error(
                 '圖片檔案格式不符，請上傳 jpg / jpeg / png 檔案。'
