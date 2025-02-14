@@ -246,20 +246,13 @@ exports.deleteShoppingProductById = async (req, res) => {
 
     // 呼叫資料庫模型來刪除多個產品
     try {
-        await project_orderModel.deleteShoppingProductById(id, (err, result) => {
-            if (err) {
-                console.error('刪除訂單失敗:', err);
-                return res.status(500).send({ message: '伺服器錯誤' });
-            }
+        const result = await project_orderModel.deleteShoppingProductById(id);
 
-            // 如果 result 是空的，代表沒有使用者被刪除
-            if (!result || result.deletedCount === 0) {
-                return res.status(404).send({ message: '沒有找到對應的訂單，刪除失敗' });
-            }
+        if (!result || result.deletedCount === 0) {
+            return res.status(404).send({ message: '沒有找到對應的訂單，刪除失敗' });
+        }
 
-            // 返回成功的刪除結果
-            res.send({ message: `${result.deletedCount} 個訂單已被刪除` });
-        });
+        res.send({ message: `${result.deletedCount} 個訂單已被刪除` });
     } catch (error) {
         console.error('伺服器錯誤:', error);
         return res.status(500).send({ message: '伺服器錯誤' });
