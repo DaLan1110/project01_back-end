@@ -667,7 +667,7 @@ async function getOrderToSix() {
 
         // 查詢第二組：`order_state = '未付款'`，排序並限制 6 筆
         const unpaidOrders = await OrderData.findAll({
-            where: { order_state: '未付款' },
+            where: { order_state: '已收款' },
             order: [['create_at', 'ASC']],
             limit: 6,
         });
