@@ -340,6 +340,7 @@ exports.loginMember = async (req, res) => {
             member: {
                 id: member.id,
                 member_account: member.member_account,
+                member_permissions: member.member_permissions,
                 member_email: member.member_email,
                 member_data: memberData, // 包含從 user_data 表中獲取的資料
             },
