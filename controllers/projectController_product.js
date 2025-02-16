@@ -120,10 +120,6 @@ exports.createProductData = async (req, res) => {
         return res.status(400).send({ message: '產品上/下架 欄位缺少 或 格式錯誤' });
     }
 
-    if (!product_add || typeof product_add !== 'string') {
-        return res.status(400).send({ message: '產品加料 欄位缺少 或 格式錯誤' });
-    }
-
     if (!product_classify || typeof product_classify !== 'string') {
         return res.status(400).send({ message: '產品類別 欄位缺少 或 格式錯誤' });
     }
