@@ -565,25 +565,29 @@ async function getShoppingList(memberId) {
 // 更新減少增加產品數量----------
 async function updateShoppingListQuantity(id, updateQuantity) {
     try {
-        // 更新 `shop_quantity`
+        // **第一步：更新 shop_quantity 和 shop_price**
         const [affectedRows] = await ShoppingList.update(
             {
                 shop_quantity: updateQuantity.shop_quantity,
                 shop_price: updateQuantity.shop_price,
+            },
+            { where: { id } }
+        );
+
+        // 如果沒有行被更新，返回 null
+        if (affectedRows === 0) {
+            return null;
+        }
+
+        // **第二步：根據最新數據重新計算 shop_total**
+        await ShoppingList.update(
+            {
                 shop_total: Sequelize.literal(
                     "CAST((CAST(shop_quantity AS NUMERIC) * CAST(shop_price AS NUMERIC)) AS TEXT)"
                 ),
             },
             { where: { id } }
         );
-
-        // 如果沒有行被更新，返回 null
-        // if (affectedRows === 0) {
-        //     return null;
-        // }
-        if (!affectedRows) {
-            return null;
-        }
 
         // 獲取更新後的資料
         const updatedShoppingList = await ShoppingList.findOne({ where: { id } });
