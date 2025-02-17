@@ -569,15 +569,19 @@ async function updateShoppingListQuantity(id, updateQuantity) {
         const [affectedRows] = await ShoppingList.update(
             {
                 shop_quantity: updateQuantity.shop_quantity,
+                shop_price: updateQuantity.shop_price,
                 shop_total: Sequelize.literal(
-                    "CAST(CAST(shop_quantity AS NUMERIC) * CAST(shop_price AS NUMERIC) AS TEXT)"
+                    "CAST((CAST(shop_quantity AS NUMERIC) * CAST(shop_price AS NUMERIC)) AS TEXT)"
                 ),
             },
             { where: { id } }
         );
 
         // 如果沒有行被更新，返回 null
-        if (affectedRows === 0) {
+        // if (affectedRows === 0) {
+        //     return null;
+        // }
+        if (!affectedRows) {
             return null;
         }
 

@@ -210,6 +210,7 @@ exports.updateShopQuantity = async (req, res) => {
         // 從請求的主體中提取 id 和更新的資料
         const id = parseInt(req.params.id, 10);
         const { shop_quantity } = req.body;
+        const { shop_price } = req.body;
 
         // 驗證請求的參數
         if (isNaN(id) || !shop_quantity) {
@@ -217,7 +218,7 @@ exports.updateShopQuantity = async (req, res) => {
         }
 
         // 調用模型中的 updateShoppingListQuantity 方法
-        const updatedOrder = await project_orderModel.updateShoppingListQuantity(id, { shop_quantity });
+        const updatedOrder = await project_orderModel.updateShoppingListQuantity(id, { shop_quantity, shop_price });
 
         if (!updatedOrder) {
             return res.status(404).json({ message: '產品未找到' }); // 產品未找到，返回 404
