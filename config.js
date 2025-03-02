@@ -19,9 +19,9 @@ const config = {
   jwtSecret: process.env.JWT_SECRET,
   development: {
     username: 'root',  // PostgreSQL 用戶名稱
-    password: 'Q2Kxe3PDOhskU7ZyohOdz5hHsVoWATFt',  // PostgreSQL 密碼
-    database: 'project01_node02_z5wr',  // PostgreSQL 資料庫名稱
-    host: 'dpg-cueksg5svqrc73e100p0-a.singapore-postgres.render.com', // PostgreSQL 伺服器主機
+    password: '4vQZaHQxoavfWadUpeegIxi34bLWMFg3',  // PostgreSQL 密碼
+    database: 'project01_node02_we66',  // PostgreSQL 資料庫名稱
+    host: 'dpg-cv1peutsvqrc738pr9pg-a.singapore-postgres.render.com', // PostgreSQL 伺服器主機
     port: 5432,                 // PostgreSQL 預設端口
     dialect: 'postgres',        // 使用 PostgreSQL 資料庫
   },
